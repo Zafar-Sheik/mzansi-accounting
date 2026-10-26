@@ -1,0 +1,608 @@
+/**
+ * The Exam Room bank: NSC-style Accounting questions with marking memos.
+ * Every memo line is one mark (one tick). Money is written SA style: R12 450.
+ */
+import type { ExamQuestion } from "./types";
+
+export const EXAM_QUESTIONS: ExamQuestion[] = [
+  // ======================================================== Grade 10 · Paper 1
+  {
+    id: "g10-concepts-gaap",
+    topic: "g10-concepts",
+    title: "Concepts and GAAP",
+    source: "Thandi owns Thandi's Spaza, a sole trader in Mamelodi.",
+    parts: [
+      { q: "Give TWO differences between a sole trader and a company.", marks: 4, level: "recall", memo: ["Sole trader: one owner", "Company: owned by shareholders", "Sole trader: unlimited liability", "Company: limited liability / separate legal person"] },
+      { q: "Thandi paid her own cellphone account from the business bank account. Name the GAAP principle that applies and explain how the transaction must be recorded.", marks: 3, level: "comprehension", memo: ["Business entity principle", "The owner and the business are separate", "Record it as drawings (Dr Drawings, Cr Bank)"] },
+      { q: "Name TWO users of financial statements and state what EACH wants to know.", marks: 4, level: "comprehension", memo: ["Bank / lender", "Whether the business can repay a loan", "SARS", "How much tax must be paid"] },
+    ],
+  },
+  {
+    id: "g10-equation-analysis",
+    topic: "g10-equation",
+    title: "Analysis of transactions",
+    source: "Analyse the transactions of Sipho's Car Wash. Indicate the account debited, the account credited and the effect (+, − or 0) on assets (A), owner's equity (OE) and liabilities (L).\n\n1. Sipho increased his capital contribution by R20 000 (EFT).\n2. Bought a pressure washer on credit, R6 500.\n3. Paid wages, R2 400.\n4. Sold soap products for R900 cash (cost price R600).",
+    figure: { widget: "equation-lab" },
+    parts: [
+      { q: "Transaction 1: accounts and effects.", marks: 3, level: "comprehension", memo: ["Dr Bank, Cr Capital", "A +R20 000", "OE +R20 000; L 0"] },
+      { q: "Transaction 2: accounts and effects.", marks: 3, level: "comprehension", memo: ["Dr Equipment, Cr Creditors control", "A +R6 500", "L +R6 500; OE 0"] },
+      { q: "Transaction 3: accounts and effects.", marks: 3, level: "comprehension", memo: ["Dr Wages, Cr Bank", "A −R2 400", "OE −R2 400; L 0"] },
+      { q: "Transaction 4: show the effect of the sale AND the cost of sales.", marks: 4, level: "analysis", memo: ["Dr Bank, Cr Sales: A +R900, OE +R900", "Dr Cost of sales, Cr Trading stock", "A −R600", "OE −R600 (net +R300 profit)"] },
+    ],
+  },
+  {
+    id: "g10-equation-calc",
+    topic: "g10-equation",
+    title: "Using the accounting equation",
+    source: "Information of Kasi Kicks at the end of the year: total assets R380 000; total liabilities R95 000; capital at the start of the year R250 000; drawings R60 000.",
+    parts: [
+      { q: "Calculate owner's equity at the end of the year.", marks: 2, level: "comprehension", memo: ["R380 000 − R95 000", "= R285 000"] },
+      { q: "Calculate the net profit for the year.", marks: 3, level: "analysis", memo: ["Capital at end = start + NP − drawings", "R285 000 = R250 000 + NP − R60 000", "NP = R95 000"] },
+    ],
+  },
+  {
+    id: "g10-journals-crj",
+    topic: "g10-journals",
+    title: "Cash Receipts Journal",
+    source: "Ubuntu Phones uses the perpetual inventory system and a mark-up of 60% on cost. Transactions for March:\n\n- 5 Mar: cash sales, R12 800\n- 9 Mar: received R1 450 from debtor N. Zulu\n- 15 Mar: received rent from tenant, R4 000\n- 20 Mar: owner increased capital by EFT, R30 000",
+    parts: [
+      { q: "Calculate the cost of sales for the cash sales on 5 March.", marks: 2, level: "comprehension", memo: ["R12 800 × 100/160", "= R8 000"] },
+      { q: "In which column(s) of the CRJ will the R1 450 from N. Zulu be recorded?", marks: 2, level: "comprehension", memo: ["Bank (and analysis of receipts)", "Debtors control"] },
+      { q: "Name the source document for the rent received and the column used.", marks: 2, level: "recall", memo: ["Receipt (duplicate)", "Sundry accounts (Rent income)"] },
+      { q: "Calculate the Bank column total for March.", marks: 2, level: "comprehension", memo: ["R12 800 + R1 450 + R4 000 + R30 000", "= R48 250"] },
+    ],
+  },
+  {
+    id: "g10-journals-docs",
+    topic: "g10-journals",
+    title: "Source documents",
+    figure: { widget: "journal-lab" },
+    parts: [
+      { q: "Name the source document AND the journal for: (a) goods sold on credit; (b) goods bought on credit; (c) goods returned by a debtor.", marks: 6, level: "recall", memo: ["(a) Duplicate invoice", "Debtors Journal", "(b) Original invoice", "Creditors Journal", "(c) Duplicate credit note", "Debtors Allowances Journal"] },
+      { q: "Why must every transaction be supported by a source document?", marks: 2, level: "comprehension", memo: ["Proof / evidence that the transaction took place", "Needed for internal control and auditing"] },
+    ],
+  },
+  {
+    id: "g10-ledger-tb",
+    topic: "g10-ledger",
+    title: "Trial Balance",
+    source: "Balances of Joburg Juice Bar on 28 Feb: Capital R180 000; Drawings R24 000; Equipment R95 000; Trading stock R31 000; Debtors control R12 500; Bank ?; Creditors control R17 800; Loan R40 000; Sales R310 000; Cost of sales R186 000; Salaries R72 000; Rent expense R36 000; Sundry expenses R14 300.",
+    figure: { widget: "t-account-lab" },
+    parts: [
+      { q: "Calculate the missing Bank balance (it is a debit balance).", marks: 4, level: "analysis", memo: ["Credits: R180 000 + R17 800 + R40 000 + R310 000 = R547 800", "Known debits: R470 800", "Bank = R547 800 − R470 800", "= R77 000"] },
+      { q: "Explain why a Trial Balance that balances may still contain errors. Give ONE example.", marks: 3, level: "evaluation", memo: ["It only proves that debits = credits", "Errors that affect both sides equally are not revealed", "e.g. a transaction omitted completely / posted to the wrong account"] },
+    ],
+  },
+  {
+    id: "g10-ledger-accounts",
+    topic: "g10-ledger",
+    title: "Posting and balancing",
+    parts: [
+      { q: "State the debit/credit rule for (a) an asset account and (b) an income account.", marks: 4, level: "recall", memo: ["(a) Asset: increases on the debit side", "decreases on the credit side", "(b) Income: increases on the credit side", "decreases on the debit side"] },
+      { q: "The Creditors control account has debits of R14 000 and credits of R39 500. Calculate the balance and state whether it is a debit or credit balance.", marks: 3, level: "comprehension", memo: ["R39 500 − R14 000", "= R25 500", "Credit balance"] },
+    ],
+  },
+  {
+    id: "g10-statements-is",
+    topic: "g10-statements",
+    title: "Income Statement extract",
+    source: "Figures from the books of Braai Masters on 28 February: Sales R640 000; Cost of sales R400 000; Rent income R18 000; Salaries R96 000; Water & electricity R21 000; Advertising R8 500; Stationery R4 200 (stationery on hand at year-end R700); Interest on loan R6 000.",
+    figure: { widget: "statement-builder" },
+    parts: [
+      { q: "Calculate gross profit.", marks: 2, level: "comprehension", memo: ["R640 000 − R400 000", "= R240 000"] },
+      { q: "Calculate the stationery expense for the Income Statement.", marks: 2, level: "comprehension", memo: ["R4 200 − R700", "= R3 500"] },
+      { q: "Calculate the net profit for the year.", marks: 4, level: "analysis", memo: ["R240 000 + R18 000 = R258 000", "Operating expenses: R96 000 + R21 000 + R8 500 + R3 500 = R129 000", "Operating profit R129 000 − interest R6 000", "Net profit = R123 000"] },
+      { q: "Where will the stationery on hand appear in the Balance Sheet?", marks: 1, level: "recall", memo: ["Current assets (trade and other receivables / consumable stores on hand)"] },
+    ],
+  },
+  {
+    id: "g10-statements-bs",
+    topic: "g10-statements",
+    title: "Owner's equity",
+    source: "Capital at the beginning of the year: R300 000. Net profit: R123 000. Drawings: R84 000. The owner contributed an extra R50 000 during the year.",
+    parts: [
+      { q: "Calculate the owner's equity at the end of the year.", marks: 3, level: "comprehension", memo: ["R300 000 + R50 000 + R123 000", "− R84 000", "= R389 000"] },
+      { q: "Explain the difference between a current liability and a non-current liability. Give an example of each.", marks: 4, level: "comprehension", memo: ["Current: payable within 12 months", "e.g. creditors / bank overdraft", "Non-current: payable after more than 12 months", "e.g. a long-term loan"] },
+    ],
+  },
+  // ======================================================== Grade 10 · Paper 2
+  {
+    id: "g10-salaries-wages",
+    topic: "g10-salaries",
+    title: "Wages and salaries",
+    source: "Lerato earns R52 per hour for a 45-hour week. Overtime is paid at time-and-a-half. In week 3 she worked 50 hours. Her deductions are PAYE R180 and UIF (1% of gross).",
+    figure: { widget: "payslip-lab" },
+    parts: [
+      { q: "Calculate Lerato's gross wage for week 3.", marks: 4, level: "comprehension", memo: ["Normal: 45 × R52 = R2 340", "Overtime: 5 × R52 × 1,5", "= R390", "Gross = R2 730"] },
+      { q: "Calculate her net wage.", marks: 3, level: "comprehension", memo: ["UIF = 1% × R2 730 = R27,30", "Deductions = R180 + R27,30 = R207,30", "Net wage = R2 522,70"] },
+      { q: "Explain the difference between UIF and SDL.", marks: 2, level: "comprehension", memo: ["UIF: 1% employee + 1% employer – insurance if you lose your job", "SDL: 1% paid by the employer only – funds skills training"] },
+    ],
+  },
+  {
+    id: "g10-salaries-journal",
+    topic: "g10-salaries",
+    title: "Salaries Journal",
+    source: "Salaries Journal totals for March: gross salaries R184 000; PAYE R26 300; UIF R1 840; pension fund R13 800; medical aid R12 400. The employer contributes the same amount as the employees to the pension fund and UIF.",
+    parts: [
+      { q: "Calculate the net salaries.", marks: 2, level: "comprehension", memo: ["R184 000 − (R26 300 + R1 840 + R13 800 + R12 400)", "= R129 660"] },
+      { q: "Calculate the employer's total contribution (pension + UIF).", marks: 2, level: "comprehension", memo: ["R13 800 + R1 840", "= R15 640"] },
+      { q: "Why is PAYE shown as a liability until it is paid over?", marks: 2, level: "evaluation", memo: ["The business deducted it on behalf of SARS", "It owes the money to SARS"] },
+    ],
+  },
+  {
+    id: "g10-vat-calc",
+    topic: "g10-vat",
+    title: "VAT calculations",
+    source: "Cape Surf Supplies is a registered VAT vendor. For the VAT period: sales including VAT R460 000; purchases including VAT R276 000; zero-rated sales of fresh fruit R12 000.",
+    figure: { widget: "vat-lab" },
+    parts: [
+      { q: "Calculate output VAT.", marks: 2, level: "comprehension", memo: ["R460 000 × 15/115", "= R60 000"] },
+      { q: "Calculate input VAT.", marks: 2, level: "comprehension", memo: ["R276 000 × 15/115", "= R36 000"] },
+      { q: "Calculate the amount payable to SARS.", marks: 2, level: "comprehension", memo: ["R60 000 − R36 000", "= R24 000"] },
+      { q: "Explain the difference between zero-rated and exempt supplies.", marks: 2, level: "comprehension", memo: ["Zero-rated: VAT at 0% – input VAT can be claimed", "Exempt: no VAT and input VAT cannot be claimed"] },
+    ],
+  },
+  {
+    id: "g10-vat-concept",
+    topic: "g10-vat",
+    title: "VAT concepts and ethics",
+    parts: [
+      { q: "Explain why VAT is called an 'indirect tax' that is carried by the final consumer.", marks: 2, level: "comprehension", memo: ["It is collected by vendors on behalf of SARS", "Vendors claim input VAT back; only the final consumer cannot"] },
+      { q: "A shop owner does not ring up cash sales so that less output VAT is paid. Explain why this is a problem.", marks: 3, level: "evaluation", memo: ["It is tax evasion – illegal", "SARS (the country) loses revenue for services", "Penalties/criminal charges; dishonest records mislead other users"] },
+    ],
+  },
+  {
+    id: "g10-bank-recon",
+    topic: "g10-bank",
+    title: "Bank Reconciliation Statement",
+    source: "On 31 March the Bank account shows R15 250 favourable (before the following). The bank statement shows R10 015 favourable. Items:\n\n- Bank charges R230 and a debit order for insurance R650 appear only on the statement\n- Interest received R45 appears only on the statement\n- A deposit of R5 300 is not on the statement\n- EFT 113 for R900 is not on the statement",
+    figure: { widget: "bank-recon-lab" },
+    parts: [
+      { q: "Calculate the correct Bank account balance after updating the journals.", marks: 4, level: "comprehension", memo: ["R15 250 − R230", "− R650", "+ R45", "= R14 415"] },
+      { q: "Prepare the Bank Reconciliation Statement (show calculation).", marks: 4, level: "analysis", memo: ["Credit balance per bank statement R10 015", "+ Outstanding deposit R5 300", "− Outstanding EFT R900", "Debit balance per Bank account R14 415"] },
+      { q: "Give ONE internal-control measure to protect cash deposits.", marks: 2, level: "evaluation", memo: ["Deposit cash daily", "Different people receive cash and do the reconciliation (segregation of duties)"] },
+    ],
+  },
+  {
+    id: "g10-bank-concepts",
+    topic: "g10-bank",
+    title: "Why reconcile?",
+    parts: [
+      { q: "Give TWO reasons why the bank statement balance differs from the Bank account balance.", marks: 4, level: "comprehension", memo: ["Timing differences", "e.g. outstanding deposits / payments", "Items only on the statement", "e.g. bank charges, interest, debit orders"] },
+      { q: "Why does a favourable balance appear on the CREDIT side of the bank statement?", marks: 2, level: "comprehension", memo: ["The bank owes the money to the client", "To the bank it is a liability"] },
+    ],
+  },
+  {
+    id: "g10-ethics-control",
+    topic: "g10-ethics",
+    title: "Internal control",
+    source: "At Durban Bunny Co. one employee takes cash orders, operates the till, banks the cash and prepares the monthly bank reconciliation. Stock is kept in an unlocked storeroom.",
+    parts: [
+      { q: "Identify TWO internal-control weaknesses.", marks: 2, level: "analysis", memo: ["No segregation of duties – one person handles cash and records", "Stock is not physically protected"] },
+      { q: "Suggest ONE solution for each weakness.", marks: 4, level: "evaluation", memo: ["Divide duties between different people", "e.g. the owner does the bank reconciliation", "Lock the storeroom / limit access", "Do regular stock counts"] },
+      { q: "Name TWO professional accounting bodies in South Africa.", marks: 2, level: "recall", memo: ["SAICA", "SAIPA (or CIMA, ACCA, SAIBA)"] },
+    ],
+  },
+  {
+    id: "g10-cost-pricing",
+    topic: "g10-cost",
+    title: "Costs and pricing",
+    source: "Naledi prints T-shirts. Each shirt costs R55 (blank shirt) + R10 (ink). Her printing machine lease is R1 500 per month and she pays R500 a month for her stall.",
+    figure: { widget: "break-even-lab" },
+    parts: [
+      { q: "Classify the following as fixed or variable: ink; machine lease; blank shirts; stall rent.", marks: 4, level: "recall", memo: ["Ink: variable", "Machine lease: fixed", "Blank shirts: variable", "Stall rent: fixed"] },
+      { q: "Calculate the selling price if Naledi adds 100% mark-up to the variable cost.", marks: 2, level: "comprehension", memo: ["R65 × 200/100", "= R130"] },
+      { q: "Calculate how many shirts she must sell per month to break even.", marks: 3, level: "analysis", memo: ["Fixed costs = R2 000", "Contribution = R130 − R65 = R65", "R2 000 ÷ R65 = 30,8 → 31 shirts"] },
+    ],
+  },
+  {
+    id: "g10-budget-variance",
+    topic: "g10-budget",
+    title: "Budget vs actual",
+    source: "| Item | Budget | Actual |\n|---|---:|---:|\n| Sales | R90 000 | R82 000 |\n| Wages | R24 000 | R24 000 |\n| Telephone | R1 500 | R3 900 |\n| Depreciation | R4 000 | R4 000 |",
+    parts: [
+      { q: "Calculate the variance for telephone and state whether it is favourable or unfavourable.", marks: 3, level: "comprehension", memo: ["R3 900 − R1 500", "= R2 400", "Unfavourable"] },
+      { q: "Which item will NOT appear in a cash budget? Explain.", marks: 2, level: "comprehension", memo: ["Depreciation", "It is a non-cash expense – no money is paid"] },
+      { q: "Suggest ONE reason for the sales variance and ONE action the owner can take.", marks: 2, level: "evaluation", memo: ["e.g. more competition / poor advertising", "e.g. run a promotion / improve advertising"] },
+    ],
+  },
+  {
+    id: "g10-inventory-systems",
+    topic: "g10-inventory",
+    title: "Inventory systems",
+    source: "Karoo Crafts uses the periodic inventory system. Opening stock R26 000; purchases R148 000; carriage on purchases R2 600; returns to suppliers R1 800; closing stock (count) R31 400.",
+    figure: { widget: "inventory-lab" },
+    parts: [
+      { q: "Calculate the cost of sales.", marks: 4, level: "comprehension", memo: ["Net purchases = R148 000 + R2 600 − R1 800 = R148 800", "R26 000 + R148 800", "− R31 400", "= R143 400"] },
+      { q: "Give TWO differences between the periodic and perpetual inventory systems.", marks: 4, level: "comprehension", memo: ["Perpetual: cost of sales recorded with each sale", "Periodic: cost of sales calculated at year-end", "Perpetual: purchases debited to Trading stock", "Periodic: purchases debited to Purchases account"] },
+    ],
+  },
+  // ======================================================== Grade 11 · Paper 1
+  {
+    id: "g11-adjustments-np",
+    topic: "g11-adjustments",
+    title: "Correcting net profit",
+    source: "The bookkeeper of Soweto Sneaker Lab calculated a net profit of R186 000 before taking these adjustments into account:\n\n1. Insurance includes R2 400 paid for the next financial year.\n2. Telephone account of R1 300 for February is unpaid.\n3. Rent income includes R6 500 received for March (next year).\n4. Depreciation of R14 200 has not been recorded.\n5. The provision for bad debts must be increased by R900.",
+    parts: [
+      { q: "Calculate the correct net profit.", marks: 6, level: "analysis", memo: ["R186 000 + R2 400", "− R1 300", "− R6 500", "− R14 200", "− R900", "= R165 500"] },
+      { q: "Which GAAP principle explains adjustments 1 to 3?", marks: 1, level: "recall", memo: ["Matching principle"] },
+      { q: "Explain why a provision for bad debts is created.", marks: 2, level: "comprehension", memo: ["Prudence – some debtors may not pay", "Debtors must not be overstated in the Balance Sheet"] },
+    ],
+  },
+  {
+    id: "g11-adjustments-debtors",
+    topic: "g11-adjustments",
+    title: "Bad debts and the provision",
+    source: "Debtors control R96 000 before writing off R4 000 owed by T. Mokoena. The provision for bad debts must be 5% of debtors. The existing provision is R3 800.",
+    parts: [
+      { q: "Calculate the new provision for bad debts.", marks: 2, level: "comprehension", memo: ["5% × (R96 000 − R4 000)", "= R4 600"] },
+      { q: "Calculate the provision for bad debts adjustment and state whether it is income or an expense.", marks: 3, level: "comprehension", memo: ["R4 600 − R3 800", "= R800", "Expense (increase)"] },
+      { q: "Calculate net debtors for the Balance Sheet.", marks: 2, level: "comprehension", memo: ["R92 000 − R4 600", "= R87 400"] },
+    ],
+  },
+  {
+    id: "g11-partnership-appropriation",
+    topic: "g11-partnerships",
+    title: "Appropriation of profit",
+    source: "Ayesha and Bongani are partners. Capital: Ayesha R500 000, Bongani R300 000. Interest on capital 10% p.a. Salaries: Ayesha R120 000, Bongani R150 000. Remaining profit/loss is shared 3:2. Net profit for the year R420 000.",
+    figure: { widget: "appropriation-lab" },
+    parts: [
+      { q: "Calculate the interest on capital for each partner.", marks: 2, level: "comprehension", memo: ["Ayesha: R50 000", "Bongani: R30 000"] },
+      { q: "Calculate the remaining profit and each partner's share.", marks: 4, level: "analysis", memo: ["R420 000 − R270 000 − R80 000", "= R70 000", "Ayesha 3/5 = R42 000", "Bongani 2/5 = R28 000"] },
+      { q: "Calculate Ayesha's total share of profit.", marks: 2, level: "comprehension", memo: ["R120 000 + R50 000 + R42 000", "= R212 000"] },
+      { q: "Explain why partners' salaries are not shown in the Income Statement.", marks: 2, level: "comprehension", memo: ["Partners are owners, not employees", "Salaries are an appropriation (sharing) of profit"] },
+    ],
+  },
+  {
+    id: "g11-partnership-current",
+    topic: "g11-partnerships",
+    title: "Current accounts",
+    source: "Bongani's current account had a debit balance of R6 000 at the start of the year. His total share of profit was R208 000 and his drawings were R190 000.",
+    parts: [
+      { q: "Calculate the balance on Bongani's current account at year-end.", marks: 3, level: "comprehension", memo: ["−R6 000 + R208 000", "− R190 000", "= R12 000 credit"] },
+      { q: "What does a debit balance on a partner's current account mean?", marks: 2, level: "evaluation", memo: ["The partner withdrew more than their share of profit", "It reduces the partner's equity"] },
+    ],
+  },
+  {
+    id: "g11-clubs-fees",
+    topic: "g11-clubs",
+    title: "Membership fees",
+    source: "Kasi Chess Club has 90 members; the annual fee is R400. Fees received during the year: R37 600. This includes R1 600 for last year and R2 400 for next year.",
+    parts: [
+      { q: "Calculate the membership fees income for the Income and Expenditure Statement.", marks: 2, level: "comprehension", memo: ["90 × R400", "= R36 000"] },
+      { q: "Calculate the fees still owing for this year (arrears).", marks: 3, level: "analysis", memo: ["Received for this year = R37 600 − R1 600 − R2 400 = R33 600", "R36 000 − R33 600", "= R2 400 (6 members)"] },
+      { q: "Where are fees received in advance shown in the Balance Sheet?", marks: 1, level: "recall", memo: ["Current liabilities"] },
+      { q: "Give TWO differences between a club and a business.", marks: 2, level: "comprehension", memo: ["A club does not aim to make a profit", "Club: accumulated fund and surplus/deficit instead of capital and profit"] },
+    ],
+  },
+  {
+    id: "g11-fixed-assets-dep",
+    topic: "g11-fixed-assets",
+    title: "Depreciation and disposal",
+    source: "Vehicles: cost R420 000; accumulated depreciation on 1 March R180 000. Depreciation is 20% p.a. on the diminishing-balance method. On 30 November a vehicle (cost R150 000, accumulated depreciation on 1 March R66 000) was sold for R70 000 cash. Year-end is 28 February.",
+    figure: { widget: "depreciation-lab" },
+    parts: [
+      { q: "Calculate depreciation on the vehicle sold up to the date of sale.", marks: 3, level: "comprehension", memo: ["(R150 000 − R66 000) × 20%", "× 9/12", "= R12 600"] },
+      { q: "Calculate the profit or loss on the sale.", marks: 3, level: "analysis", memo: ["Carrying value = R84 000 − R12 600 = R71 400", "R70 000 − R71 400", "= R1 400 loss"] },
+      { q: "Calculate depreciation on the remaining vehicles for the year.", marks: 3, level: "analysis", memo: ["(R270 000 − R114 000)", "× 20%", "= R31 200"] },
+    ],
+  },
+  {
+    id: "g11-analysis-ratios",
+    topic: "g11-analysis",
+    title: "Liquidity and profitability",
+    source: "| | 2026 | 2025 |\n|---|---:|---:|\n| Sales | R960 000 | R880 000 |\n| Cost of sales | R640 000 | R550 000 |\n| Net profit | R96 000 | R132 000 |\n| Current assets | R180 000 | R210 000 |\n| Inventories | R120 000 | R80 000 |\n| Current liabilities | R150 000 | R100 000 |",
+    figure: { widget: "ratio-lab" },
+    parts: [
+      { q: "Calculate the gross profit on sales % for 2026.", marks: 3, level: "comprehension", memo: ["GP = R320 000", "R320 000 ÷ R960 000 × 100", "= 33,3%"] },
+      { q: "Calculate the current ratio and acid-test ratio for 2026.", marks: 4, level: "comprehension", memo: ["Current: R180 000 : R150 000", "= 1,2 : 1", "Acid-test: (R180 000 − R120 000) : R150 000", "= 0,4 : 1"] },
+      { q: "Comment on the liquidity of the business. Quote figures.", marks: 3, level: "evaluation", memo: ["Current ratio fell from 2,1:1 to 1,2:1", "Acid-test fell from 1,3:1 to 0,4:1 – stock has increased (R80 000 to R120 000)", "The business may struggle to pay current liabilities; reduce stock"] },
+    ],
+  },
+  // ======================================================== Grade 11 · Paper 2
+  {
+    id: "g11-recon-debtors",
+    topic: "g11-reconciliations",
+    title: "Debtors reconciliation",
+    source: "Debtors control R48 200; total of the debtors' list R46 900. Errors found:\n\n1. The Debtors Journal was undercast by R1 000.\n2. A credit note of R300 was posted to the debit side of debtor K. Ndlovu's account.\n3. An invoice of R1 900 was not recorded at all.",
+    parts: [
+      { q: "Calculate the correct Debtors control balance.", marks: 3, level: "comprehension", memo: ["R48 200 + R1 000", "+ R1 900", "= R51 100"] },
+      { q: "Calculate the correct total of the debtors' list.", marks: 3, level: "analysis", memo: ["R46 900 − R600 (2 × R300)", "+ R1 900", "= R48 200"] },
+      { q: "The two corrected totals should agree. Comment and suggest what the bookkeeper should do.", marks: 2, level: "evaluation", memo: ["They still differ by R2 900 – more errors remain", "Check all postings/journal totals again"] },
+    ],
+  },
+  {
+    id: "g11-recon-creditor",
+    topic: "g11-reconciliations",
+    title: "Creditor's statement",
+    source: "Our Creditors Ledger: Shoe Wholesalers R38 950. Statement from Shoe Wholesalers: R46 300. Differences: our EFT of R6 000 is not on the statement; interest of R350 charged by the supplier is not in our books; the supplier recorded an invoice of R1 000 twice.",
+    parts: [
+      { q: "Reconcile the statement balance with our ledger balance.", marks: 4, level: "analysis", memo: ["Statement R46 300 − R6 000", "− R1 000 (duplicate)", "= R39 300", "Ledger: R38 950 + R350 = R39 300 ✔"] },
+      { q: "Give ONE internal-control measure for creditors.", marks: 2, level: "evaluation", memo: ["Check creditors' statements against our ledger every month", "Only pay invoices that are authorised/match goods received"] },
+    ],
+  },
+  {
+    id: "g11-cost-pcs",
+    topic: "g11-cost",
+    title: "Production Cost Statement",
+    source: "Mzansi Chairs: direct material cost R180 000; direct labour R120 000; indirect material R9 000; indirect labour R16 000; factory rent R36 000 (the factory uses 80% of a building whose total rent is R45 000); depreciation on factory equipment R14 000; office salaries R60 000; WIP opening R12 000, closing R9 000. 3 000 chairs were completed.",
+    figure: { widget: "cost-lab" },
+    parts: [
+      { q: "Calculate the factory overhead cost.", marks: 3, level: "comprehension", memo: ["R9 000 + R16 000", "+ R36 000 + R14 000", "= R75 000"] },
+      { q: "Calculate the cost of production of finished goods.", marks: 3, level: "analysis", memo: ["Prime cost R300 000 + R75 000 = R375 000", "+ R12 000 − R9 000", "= R378 000"] },
+      { q: "Calculate the cost per chair.", marks: 2, level: "comprehension", memo: ["R378 000 ÷ 3 000", "= R126"] },
+      { q: "Why are office salaries excluded from the Production Cost Statement?", marks: 2, level: "comprehension", memo: ["They are administration costs", "Not incurred in the factory to make the product"] },
+    ],
+  },
+  {
+    id: "g11-budget-cash",
+    topic: "g11-budget",
+    title: "Cash budget",
+    source: "Credit sales: April R60 000, May R80 000, June R90 000. Debtors pay 30% in the month of sale (5% discount), 60% the next month and 8% the month after; the rest is written off. Cash sales are 40% of total sales.",
+    figure: { widget: "cash-budget-lab" },
+    parts: [
+      { q: "Calculate the cash expected from debtors in June.", marks: 4, level: "analysis", memo: ["June: R90 000 × 30% × 95% = R25 650", "May: R80 000 × 60% = R48 000", "April: R60 000 × 8% = R4 800", "Total = R78 450"] },
+      { q: "What percentage of debtors is written off, and why is it not in the cash budget?", marks: 2, level: "comprehension", memo: ["2%", "Bad debts never result in cash being received"] },
+      { q: "Calculate total sales in June if credit sales are 60% of total sales.", marks: 2, level: "comprehension", memo: ["R90 000 ÷ 60%", "= R150 000"] },
+    ],
+  },
+  {
+    id: "g11-budget-comment",
+    topic: "g11-budget",
+    title: "Interpreting a cash budget",
+    source: "| | July | August | September |\n|---|---:|---:|---:|\n| Opening bank | R18 000 | R6 500 | (R9 200) |\n| Receipts | R95 000 | R88 000 | R120 000 |\n| Payments | R106 500 | R103 700 | R98 000 |\n| Closing bank | R6 500 | (R9 200) | ? |",
+    parts: [
+      { q: "Calculate the closing bank balance for September.", marks: 2, level: "comprehension", memo: ["−R9 200 + R120 000 − R98 000", "= R12 800"] },
+      { q: "In which month is there a cash shortage? Give TWO ways the business could avoid it.", marks: 3, level: "evaluation", memo: ["August (overdraft of R9 200)", "Collect from debtors faster / offer a discount for early payment", "Delay a non-urgent payment or arrange an overdraft facility in advance"] },
+      { q: "Explain why depreciation of R4 000 per month is not shown in the cash budget.", marks: 2, level: "comprehension", memo: ["Depreciation is a non-cash expense", "No money leaves the bank"] },
+    ],
+  },
+  {
+    id: "g11-cost-classify",
+    topic: "g11-cost",
+    title: "Classifying manufacturing costs",
+    parts: [
+      { q: "Classify each cost as direct material, direct labour, factory overheads, administration or selling & distribution: (a) wood for tables; (b) salary of the factory foreman; (c) office stationery; (d) wages of carpenters; (e) commission paid to sales staff.", marks: 5, level: "recall", memo: ["(a) Direct material", "(b) Factory overheads", "(c) Administration", "(d) Direct labour", "(e) Selling & distribution"] },
+      { q: "Water & electricity of R40 000 is shared 75% factory and 25% office. Calculate the amount for factory overheads.", marks: 2, level: "comprehension", memo: ["75% × R40 000", "= R30 000"] },
+      { q: "Direct labour per unit increased from R60 to R75 while wage rates stayed the same. Suggest a reason and a solution.", marks: 2, level: "evaluation", memo: ["Workers are less productive / more hours per unit (idle time, poor supervision)", "Better supervision, training or incentive bonuses for productivity"] },
+    ],
+  },
+  {
+    id: "g11-recon-control",
+    topic: "g11-reconciliations",
+    title: "Internal control over debtors",
+    source: "The bookkeeper of Mama Afrika Catering records credit sales, receives payments from debtors and posts to the Debtors Ledger. Several debtors complain that their statements show amounts they have already paid.",
+    parts: [
+      { q: "Identify the internal-control problem.", marks: 2, level: "analysis", memo: ["One person receives money AND records it (no segregation of duties)", "Payments may be stolen and hidden in the debtors' accounts"] },
+      { q: "Suggest TWO measures to solve the problem.", marks: 2, level: "evaluation", memo: ["Separate receiving cash from recording in the Debtors Ledger", "Send monthly statements to debtors and follow up queries independently / reconcile the control account monthly"] },
+    ],
+  },
+  {
+    id: "g11-budget-creditors",
+    topic: "g11-budget",
+    title: "Creditors' payment schedule",
+    source: "Credit purchases of stock: May R70 000, June R90 000. The business pays 60% of purchases the month after purchase (receiving a 5% discount) and the remaining 40% two months after purchase. Credit purchases in April were R80 000.",
+    parts: [
+      { q: "Calculate the amount paid to creditors in June.", marks: 4, level: "analysis", memo: ["May purchases: R70 000 × 60%", "× 95% = R39 900", "April purchases: R80 000 × 40% = R32 000", "Total = R71 900"] },
+      { q: "Calculate the amount paid to creditors in July.", marks: 3, level: "comprehension", memo: ["R90 000 × 60% × 95% = R51 300", "R70 000 × 40% = R28 000", "Total = R79 300"] },
+      { q: "Why is it a good idea to take the 5% discount, even if it means paying sooner?", marks: 2, level: "evaluation", memo: ["It reduces the cost of stock", "Which increases profit (as long as the bank balance can afford it)"] },
+    ],
+  },
+  {
+    id: "g11-cost-units",
+    topic: "g11-cost",
+    title: "Comparing unit costs",
+    source: "| Per chair | 2026 | 2025 |\n|---|---:|---:|\n| Direct materials | R48 | R40 |\n| Direct labour | R30 | R31 |\n| Factory overheads | R26 | R18 |\n| Total | R104 | R89 |\n\nUnits produced: 2026 – 3 000; 2025 – 4 500. Inflation: 5%.",
+    parts: [
+      { q: "Calculate the % increase in direct material cost per unit.", marks: 2, level: "comprehension", memo: ["(R48 − R40) ÷ R40 × 100", "= 20%"] },
+      { q: "Comment on the direct material cost per unit and suggest a solution.", marks: 3, level: "evaluation", memo: ["Increased 20% – far above inflation of 5%", "Possible waste, theft or a more expensive supplier", "Control raw-material storage/usage or find a cheaper supplier"] },
+      { q: "Explain why factory overheads per unit increased so sharply.", marks: 2, level: "analysis", memo: ["Fewer chairs were produced (3 000 vs 4 500)", "Fixed overheads are spread over fewer units"] },
+      { q: "Calculate the total production cost for 2026.", marks: 2, level: "comprehension", memo: ["3 000 × R104", "= R312 000"] },
+    ],
+  },
+  // ======================================================== Grade 12 · Paper 1
+  {
+    id: "g12-companies-osc",
+    topic: "g12-companies",
+    title: "Ordinary share capital and retained income",
+    source: "Ubuntu Phones Ltd: 1 March – 800 000 shares issued for R2 400 000. 31 August – 50 000 shares repurchased at R4,20 each. Retained income on 1 March: R520 000. Net profit after tax R1 314 000. Interim dividends R180 000. Final dividend: 60 cents per share on all shares in issue at year-end.",
+    parts: [
+      { q: "Calculate the amount by which ordinary share capital decreases on the buy-back.", marks: 3, level: "comprehension", memo: ["Average issue price R2 400 000 ÷ 800 000 = R3", "50 000 × R3", "= R150 000"] },
+      { q: "Calculate the amount by which retained income decreases on the buy-back.", marks: 2, level: "comprehension", memo: ["50 000 × (R4,20 − R3)", "= R60 000"] },
+      { q: "Calculate the final dividend.", marks: 2, level: "comprehension", memo: ["750 000 × R0,60", "= R450 000"] },
+      { q: "Calculate retained income at year-end.", marks: 4, level: "analysis", memo: ["R520 000 + R1 314 000", "− R60 000", "− R180 000 − R450 000", "= R1 144 000"] },
+    ],
+  },
+  {
+    id: "g12-companies-tax",
+    topic: "g12-companies",
+    title: "Income tax",
+    source: "Net profit before tax R1 800 000. Income tax is 27% of net profit. Provisional tax payments during the year: R460 000.",
+    parts: [
+      { q: "Calculate income tax for the year.", marks: 2, level: "comprehension", memo: ["27% × R1 800 000", "= R486 000"] },
+      { q: "Calculate the amount owed to SARS at year-end and state where it appears in the Balance Sheet.", marks: 3, level: "comprehension", memo: ["R486 000 − R460 000", "= R26 000", "Current liabilities (trade and other payables)"] },
+      { q: "Give TWO characteristics of a public company.", marks: 2, level: "recall", memo: ["Shares may be offered to the public / listed on the JSE", "At least 3 directors; limited liability; name ends in Ltd"] },
+    ],
+  },
+  {
+    id: "g12-statements-bs",
+    topic: "g12-statements",
+    title: "Balance Sheet extracts",
+    source: "Trade debtors R86 000; provision for bad debts R4 300; prepaid expenses R3 200; accrued income R1 500; trade creditors R64 000; accrued expenses R7 800; income received in advance R4 000; SARS income tax owed R26 000; shareholders for dividends R450 000. Loan balance R600 000, of which R120 000 is payable in the next 12 months.",
+    figure: { widget: "statement-builder" },
+    parts: [
+      { q: "Calculate trade and other receivables.", marks: 3, level: "comprehension", memo: ["(R86 000 − R4 300)", "+ R3 200 + R1 500", "= R86 400"] },
+      { q: "Calculate trade and other payables.", marks: 3, level: "comprehension", memo: ["R64 000 + R7 800", "+ R4 000 + R26 000", "= R101 800"] },
+      { q: "Show how the loan appears in the Balance Sheet.", marks: 2, level: "comprehension", memo: ["Non-current liabilities: R480 000", "Current liabilities: current portion R120 000"] },
+    ],
+  },
+  {
+    id: "g12-statements-np",
+    topic: "g12-statements",
+    title: "Correcting net profit before tax",
+    source: "Incorrect net profit before tax: R480 000. Adjustments: insurance prepaid R4 000; salary owing R12 000; rent received in advance R6 000; interest on fixed deposit receivable R3 200; depreciation not recorded R45 000; provision for bad debts decreased by R1 500.",
+    parts: [
+      { q: "Calculate the correct net profit before tax.", marks: 6, level: "analysis", memo: ["R480 000 + R4 000", "− R12 000", "− R6 000", "+ R3 200", "− R45 000", "+ R1 500 = R425 700"] },
+      { q: "Calculate income tax at 27% of the correct net profit.", marks: 2, level: "comprehension", memo: ["27% × R425 700", "= R114 939"] },
+    ],
+  },
+  {
+    id: "g12-cash-flow",
+    topic: "g12-cash-flow",
+    title: "Cash flow statement items",
+    source: "Extracts: SARS income tax owed – start R18 000, end R24 000; income tax for the year R210 000. Shareholders for dividends – start R95 000; interim dividends R60 000; final dividend R110 000. Fixed assets (carrying value): start R1 400 000, end R1 520 000; depreciation R130 000; assets sold at carrying value R40 000. Cash and cash equivalents: start R35 000, end R150 000.",
+    parts: [
+      { q: "Calculate income tax paid.", marks: 3, level: "comprehension", memo: ["R18 000 + R210 000", "− R24 000", "= R204 000"] },
+      { q: "Calculate dividends paid.", marks: 2, level: "comprehension", memo: ["R95 000 + R60 000", "= R155 000"] },
+      { q: "Calculate fixed assets purchased.", marks: 3, level: "analysis", memo: ["R1 520 000 − R1 400 000", "+ R130 000 + R40 000", "= R290 000"] },
+      { q: "Calculate the net change in cash and cash equivalents.", marks: 2, level: "comprehension", memo: ["R150 000 − R35 000", "= R115 000 increase"] },
+      { q: "Name the section of the cash flow statement in which (a) loans repaid and (b) fixed assets bought appear.", marks: 2, level: "recall", memo: ["(a) Financing activities", "(b) Investing activities"] },
+    ],
+  },
+  {
+    id: "g12-cash-flow-cgo",
+    topic: "g12-cash-flow",
+    title: "Cash generated from operations",
+    source: "Net profit before tax R680 000; depreciation R95 000; interest expense R42 000; increase in inventories R30 000; decrease in trade receivables R12 000; increase in trade payables R8 000.",
+    parts: [
+      { q: "Calculate cash generated from operations.", marks: 5, level: "analysis", memo: ["R680 000 + R95 000 + R42 000 = R817 000", "− R30 000 (inventories)", "+ R12 000 (receivables)", "+ R8 000 (payables)", "= R807 000"] },
+      { q: "Why is depreciation added back?", marks: 2, level: "comprehension", memo: ["It is a non-cash expense", "It reduced profit but no cash left the business"] },
+    ],
+  },
+  {
+    id: "g12-analysis-shares",
+    topic: "g12-analysis",
+    title: "Shareholders' ratios",
+    source: "Mzansi Motors Ltd: net profit after tax R2 700 000; 1 500 000 shares in issue; total dividends R1 200 000; shareholders' equity R12 000 000; market price per share 940 cents. Last year: EPS 150c, DPS 90c, NAV 760c.",
+    figure: { widget: "ratio-lab" },
+    parts: [
+      { q: "Calculate EPS, DPS and NAV for this year.", marks: 6, level: "comprehension", memo: ["EPS = R2 700 000 ÷ 1 500 000 × 100", "= 180 cents", "DPS = R1 200 000 ÷ 1 500 000 × 100", "= 80 cents", "NAV = R12 000 000 ÷ 1 500 000 × 100", "= 800 cents"] },
+      { q: "Calculate the dividend pay-out rate and comment on the dividend policy.", marks: 3, level: "evaluation", memo: ["80 ÷ 180 × 100 = 44,4%", "Last year 60% (90 ÷ 150)", "The company is retaining more profit for growth/expansion"] },
+      { q: "Should a shareholder buy more shares at 940 cents? Quote TWO indicators.", marks: 3, level: "evaluation", memo: ["Yes – EPS increased from 150c to 180c", "NAV increased from 760c to 800c", "Market price above NAV shows investor confidence"] },
+    ],
+  },
+  {
+    id: "g12-analysis-returns",
+    topic: "g12-analysis",
+    title: "Returns and gearing",
+    source: "NPAT R1 080 000; NPBT R1 500 000; interest expense R180 000; average shareholders' equity R7 200 000; average loans R1 200 000; interest rate on loans 13%.",
+    parts: [
+      { q: "Calculate ROSHE.", marks: 2, level: "comprehension", memo: ["R1 080 000 ÷ R7 200 000 × 100", "= 15%"] },
+      { q: "Calculate ROTCE.", marks: 3, level: "comprehension", memo: ["(R1 500 000 + R180 000)", "÷ R8 400 000 × 100", "= 20%"] },
+      { q: "Is the company positively geared? Explain with figures.", marks: 2, level: "evaluation", memo: ["Yes – ROTCE (20%) is higher than the interest rate (13%)", "Borrowed money earns more than it costs, increasing shareholders' returns"] },
+    ],
+  },
+  {
+    id: "g12-audit-report",
+    topic: "g12-audit",
+    title: "The audit report",
+    source: "The independent auditors of Cape Retail Ltd issued a qualified audit opinion because inventory of R2,4 million could not be verified at year-end.",
+    parts: [
+      { q: "Explain what a qualified audit opinion means.", marks: 2, level: "comprehension", memo: ["The financial statements are fairly presented", "except for the specific matter (inventory) described by the auditor"] },
+      { q: "Name the other THREE types of audit opinions.", marks: 3, level: "recall", memo: ["Unqualified", "Adverse", "Disclaimer"] },
+      { q: "Why is an independent external audit important to shareholders?", marks: 2, level: "evaluation", memo: ["Shareholders do not manage the company – directors do", "The audit confirms that the directors' financial statements are reliable"] },
+    ],
+  },
+  {
+    id: "g12-audit-governance",
+    topic: "g12-audit",
+    title: "Corporate governance",
+    source: "At Sunshine Holdings Ltd the CEO is also chairperson of the board and sits on the remuneration committee that decides his own bonus. Directors' fees are not disclosed in the annual report.",
+    parts: [
+      { q: "Identify TWO corporate-governance problems.", marks: 2, level: "analysis", memo: ["The CEO is also the chairperson – too much power", "Directors' remuneration is not disclosed / CEO decides his own bonus"] },
+      { q: "Suggest how the King IV Code would address each problem.", marks: 4, level: "evaluation", memo: ["Appoint an independent non-executive chairperson", "Separate the roles of CEO and chair", "Remuneration committee of independent directors", "Disclose all directors' remuneration in the annual report"] },
+    ],
+  },
+  // ======================================================== Grade 12 · Paper 2
+  {
+    id: "g12-recon-bank",
+    topic: "g12-reconciliations",
+    title: "Bank reconciliation with errors",
+    source: "Bank account (before updating) R14 600 favourable. Bank statement items not in the journals: R/D cheque from debtor R2 300; bank charges R410; interest income R120. A deposit of R5 800 was entered in the CRJ as R8 500.",
+    parts: [
+      { q: "Calculate the correct Bank account balance.", marks: 5, level: "analysis", memo: ["R14 600 − R2 300", "− R410", "+ R120", "− R2 700 (R8 500 − R5 800)", "= R9 310"] },
+      { q: "In which journal is the R/D cheque recorded, and what is the effect on the debtor's account?", marks: 2, level: "comprehension", memo: ["Cash Payments Journal", "The debtor's balance increases (the debtor owes us again)"] },
+      { q: "A deposit of R4 000 has been outstanding for 3 months. Comment.", marks: 2, level: "evaluation", memo: ["Cash may have been stolen / not deposited (fraud)", "Investigate; segregate the duties of receiving, depositing and recording cash"] },
+    ],
+  },
+  {
+    id: "g12-recon-creditors",
+    topic: "g12-reconciliations",
+    title: "Creditors reconciliation",
+    source: "Creditors control R72 500; creditors' list R70 100. Errors: (1) CJ overcast by R900; (2) a payment of R1 500 to a creditor was posted to the credit side of the creditor's account; (3) a discount of R150 received was not recorded at all.",
+    parts: [
+      { q: "Calculate the correct Creditors control balance.", marks: 3, level: "analysis", memo: ["R72 500 − R900", "− R150", "= R71 450"] },
+      { q: "Calculate the correct creditors' list total.", marks: 3, level: "analysis", memo: ["R70 100 − R3 000 (2 × R1 500)", "− R150", "= R66 950"] },
+    ],
+  },
+  {
+    id: "g12-vat-control",
+    topic: "g12-vat",
+    title: "VAT control account",
+    source: "VAT control (owed to SARS) at the start of the period: R12 000, paid during the period. Output VAT on sales R96 000; input VAT on purchases R61 000; VAT on goods returned by debtors R1 800; VAT on bad debts written off R450; VAT on stock taken by the owner R300.",
+    figure: { widget: "vat-lab", props: { mode: "return" } },
+    parts: [
+      { q: "Calculate the amount owed to SARS at the end of the period.", marks: 5, level: "analysis", memo: ["Output: R96 000 − R1 800", "+ R300 = R94 500", "Input: R61 000", "+ R450 = R61 450", "Payable = R33 050"] },
+      { q: "Explain why VAT on bad debts may be claimed back.", marks: 2, level: "comprehension", memo: ["Output VAT was paid to SARS when the credit sale was made", "The money (including VAT) will never be received"] },
+      { q: "The owner claims input VAT on his family's holiday. Give TWO consequences.", marks: 2, level: "evaluation", memo: ["It is fraud – illegal input VAT claim", "Penalties, interest and possible criminal prosecution by SARS"] },
+    ],
+  },
+  {
+    id: "g12-cost-breakeven",
+    topic: "g12-cost",
+    title: "Break-even analysis",
+    source: "| Per unit | 2026 | 2025 |\n|---|---:|---:|\n| Selling price | R290 | R290 |\n| Direct materials | R112 | R95 |\n| Direct labour | R58 | R60 |\n| Variable overheads | R10 | R10 |\n\nTotal fixed costs: R396 000. Units produced and sold: 4 200 (2025: 5 000).",
+    figure: { widget: "break-even-lab" },
+    parts: [
+      { q: "Calculate the break-even point for 2026.", marks: 4, level: "comprehension", memo: ["Variable cost = R112 + R58 + R10 = R180", "Contribution = R290 − R180 = R110", "R396 000 ÷ R110", "= 3 600 units"] },
+      { q: "Did the business pass break-even? Quote figures.", marks: 2, level: "evaluation", memo: ["Yes – 4 200 units sold", "is 600 units above the break-even point of 3 600"] },
+      { q: "Comment on the direct material cost per unit and give ONE solution.", marks: 3, level: "evaluation", memo: ["Increased by R17 (17,9%)", "much more than inflation – wastage/theft/expensive supplier", "Solution: control waste / find a cheaper supplier / buy in bulk"] },
+    ],
+  },
+  {
+    id: "g12-cost-pcs",
+    topic: "g12-cost",
+    title: "Unit costs",
+    source: "Fixed factory overheads R250 000; units produced 5 000 (last year 6 250).",
+    parts: [
+      { q: "Calculate the fixed factory overhead cost per unit for this year and last year.", marks: 4, level: "comprehension", memo: ["R250 000 ÷ 5 000", "= R50", "R250 000 ÷ 6 250", "= R40"] },
+      { q: "Explain why the fixed cost per unit increased.", marks: 2, level: "comprehension", memo: ["Fewer units were produced", "The same total fixed cost is spread over fewer units"] },
+    ],
+  },
+  {
+    id: "g12-budget-projected",
+    topic: "g12-budget",
+    title: "Projected income statement and variances",
+    source: "| Item | Budget | Actual |\n|---|---:|---:|\n| Sales | R420 000 | R455 000 |\n| Advertising | R18 000 | R32 000 |\n| Telephone | R4 500 | R9 800 |\n| Repairs | R12 000 | R2 000 |",
+    figure: { widget: "cash-budget-lab" },
+    parts: [
+      { q: "Calculate the % by which actual sales exceeded budgeted sales.", marks: 2, level: "comprehension", memo: ["R35 000 ÷ R420 000 × 100", "= 8,3%"] },
+      { q: "Was the overspending on advertising justified? Explain.", marks: 2, level: "evaluation", memo: ["Yes – advertising was R14 000 over budget", "but sales increased by R35 000"] },
+      { q: "Comment on telephone and repairs, and give ONE control for telephone.", marks: 4, level: "evaluation", memo: ["Telephone more than doubled (R5 300 over budget)", "Possible private calls – use PIN codes/itemised billing", "Repairs R10 000 under budget", "Postponing maintenance may cause larger costs later"] },
+      { q: "Name TWO items that appear in a projected income statement but not in a cash budget.", marks: 2, level: "recall", memo: ["Depreciation", "Bad debts / provision for bad debts"] },
+    ],
+  },
+  {
+    id: "g12-inventory-fifo",
+    topic: "g12-inventory",
+    title: "FIFO and weighted average",
+    source: "Kasi Kicks sells one model of sneakers.\n\n| | Units | Price |\n|---|---:|---:|\n| Opening stock | 20 | R100 |\n| Purchase 1 | 30 | R110 |\n| Purchase 2 | 50 | R120 |\n\n70 pairs were sold at R200 each. 30 pairs are on hand.",
+    figure: { widget: "inventory-lab" },
+    parts: [
+      { q: "Value the closing stock using FIFO.", marks: 2, level: "comprehension", memo: ["30 × R120", "= R3 600"] },
+      { q: "Value the closing stock using the weighted-average method.", marks: 3, level: "comprehension", memo: ["Total cost = R2 000 + R3 300 + R6 000 = R11 300", "R11 300 ÷ 100 = R113", "30 × R113 = R3 390"] },
+      { q: "Calculate the gross profit using FIFO.", marks: 3, level: "analysis", memo: ["Sales = 70 × R200 = R14 000", "Cost of sales = R11 300 − R3 600 = R7 700", "Gross profit = R6 300"] },
+    ],
+  },
+  {
+    id: "g12-inventory-specific",
+    topic: "g12-inventory",
+    title: "Specific identification and stock control",
+    source: "Prestige Cars buys and sells used cars. Car A cost R180 000, car B R210 000 and car C R245 000. Car B was sold for R260 000. Average stock for the year R84 000 at the parts division; cost of sales R511 000.",
+    parts: [
+      { q: "Why is specific identification suitable for this business?", marks: 2, level: "comprehension", memo: ["Each car is unique and expensive", "It can be identified individually (VIN/registration)"] },
+      { q: "Calculate the gross profit on car B and the value of closing stock of cars.", marks: 3, level: "comprehension", memo: ["R260 000 − R210 000 = R50 000", "Closing stock = R180 000 + R245 000", "= R425 000"] },
+      { q: "Calculate the stock-holding period of the parts division.", marks: 2, level: "comprehension", memo: ["R84 000 ÷ R511 000 × 365", "= 60 days"] },
+    ],
+  },
+];
